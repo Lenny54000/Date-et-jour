@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jour de la semaine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input[type="date"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choisissez une date</h1>
+        <input type="date" id="dateInput">
+        <button onclick="findDay()">Voir le jour de la semaine</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function findDay() {
+            const dateInput = document.getElementById('dateInput').value;
+            if (dateInput) {
+                const date = new Date(dateInput);
+                const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+                const dayName = days[date.getDay()];
+                document.getElementById('result').innerText = `Le ${date.toLocaleDateString()} est un ${dayName}.`;
+            } else {
+                document.getElementById('result').innerText = 'Veuillez choisir une date.';
+            }
+        }
+    </script>
+</body>
+</html>
